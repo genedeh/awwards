@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react"
 import gsap from "gsap"
 
-const AnimatedTitle = ({ title, containerClass }: { title: string, containerClass: string }) => {
+const AnimatedTitle = ({ title, containerClass , sectionId}: { title: string, containerClass: string, sectionId?: string }) => {
     const containerRef = useRef(null);
     useEffect(() => {
         const context = gsap.context(() => {
@@ -23,7 +23,7 @@ const AnimatedTitle = ({ title, containerClass }: { title: string, containerClas
         return () => context.revert();
     }, [])
     return (
-        <div className={`animated-title ${containerClass}`} ref={containerRef}>
+        <div className={`animated-title special-font ${containerClass}`} ref={containerRef}>
             {title.split('<br />').map((line: string, index: number) => (
                 <div className="flex-center max-w-full flex-wrap gap-2 px-10 md:gap-3" key={index}>
                     {line.split(' ').map((word, i) => (
