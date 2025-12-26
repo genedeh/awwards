@@ -3,7 +3,7 @@ import type { ReactNode } from "react"
 interface Props {
     id: string
     title: string
-    containerClass: string
+    containerClass?: string
     leftIcon?: ReactNode
     rightIcon?: ReactNode
 
