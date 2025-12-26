@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import Button from "./Button";
-import { TiLocationArrow } from "react-icons/ti";
+import { TiHeadphones, TiLocationArrow } from "react-icons/ti";
 import { useWindowScroll } from "react-use";
 import gsap from "gsap";
 const navItems = ["Nexus", "Vault", "Prologue", "About", "Contact"];
@@ -68,13 +68,37 @@ const Navbar = () => {
               ))}
             </div>
             <button
-              className="ml-10 flex items-center space-x-0.5 cursor-pointer"
-              onClick={toggleAudioIndicator}>
-              <audio src="/audio/loop.mp3" loop ref={audioElementRef} className="hidden" />
-              {[1, 2, 3, 4].map(bar => (
-                <div key={bar} className={`indicator-line ${isIndicatorActive ? 'active' : ''}`} style={{ animationDelay: `${bar * 0.1}s` }} />
-              ))}
+              className="ml-10 relative flex items-center space-x-0.5 cursor-pointer text-(--blue-50) group"
+              onClick={toggleAudioIndicator}
+            >
+              <audio
+                src="/audio/loop.mp3"
+                loop
+                ref={audioElementRef}
+                className="hidden"
+              />
+
+              <span className="pointer-events-none absolute -bottom-10 left-1/2
+               -translate-x-1/2  whitespace-nowrap rounded-md bg-black px-3 py-1 text-xs text-(--blue-50)
+                opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                {isAudioPlaying ? "Stop music" : "Play music"}
+              </span>
+
+              {!isAudioPlaying ? (
+                <TiHeadphones />
+              ) : (
+                <>
+                  {[1, 2, 3, 4].map(bar => (
+                    <div
+                      key={bar}
+                      className={`indicator-line ${isIndicatorActive ? "active" : ""}`}
+                      style={{ animationDelay: `${bar * 0.1}s` }}
+                    />
+                  ))}
+                </>
+              )}
             </button>
+
           </div>
         </nav>
       </header>
