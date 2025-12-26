@@ -218,6 +218,14 @@
         font-size: 1.125rem;
     }
 
+    .font-zentry {
+        font-family: var(--font-zentry);
+    }
+
+    .font-general {
+        font-family: var(--font-general);
+    }
+
     .about-image {
         position: absolute;
         top: 0;
